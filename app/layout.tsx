@@ -9,13 +9,55 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'DDC - Digital Defence Club',
-  description: 'Empowering the next generation of cybersecurity professionals and blockchain innovators at CBIT',
-  keywords: 'cybersecurity, blockchain, digital defence, CBIT, hacking, security, cryptocurrency, ethical hacking',
+  title: 'DDC - Digital Defence Club | CBIT Cybersecurity Community',
+  description: 'Empowering the next generation of cybersecurity professionals and blockchain innovators at CBIT. Join our premier student organization dedicated to digital security excellence.',
+  keywords: ['cybersecurity', 'blockchain', 'digital defence', 'CBIT', 'hacking', 'security', 'cryptocurrency', 'ethical hacking', 'web3', 'student organization'],
+  authors: [{ name: 'Digital Defence Club CBIT' }],
+  creator: 'Digital Defence Club CBIT',
+  publisher: 'Digital Defence Club CBIT',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
     icon: '/logo.jpeg',
     shortcut: '/logo.jpeg',
     apple: '/logo.jpeg',
+  },
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://cbitddc.vercel.app'),
+  openGraph: {
+    title: 'DDC - Digital Defence Club | CBIT Cybersecurity Community',
+    description: 'Empowering the next generation of cybersecurity professionals and blockchain innovators at CBIT.',
+    url: '/',
+    siteName: 'Digital Defence Club CBIT',
+    images: [
+      {
+        url: '/logo.jpeg',
+        width: 1200,
+        height: 630,
+        alt: 'Digital Defence Club CBIT Logo',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'DDC - Digital Defence Club | CBIT Cybersecurity Community',
+    description: 'Empowering the next generation of cybersecurity professionals and blockchain innovators at CBIT.',
+    images: ['/logo.jpeg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
