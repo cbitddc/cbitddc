@@ -1,13 +1,13 @@
 "use client";
 
 import { ChevronDown } from 'lucide-react';
-import { VantaNetBackgroundNew } from '../VantaNetBackgroundNew';
+import { VantaNetBackground } from '../VantaNetBackground';
 
 export function HeroSection() {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950">
       {/* Vanta.js NET Background */}
-      <VantaNetBackgroundNew className="z-0" />
+      <VantaNetBackground className="z-0" />
       
       {/* Enhanced dark overlay with gradient for better text contrast */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/35 to-black/55 z-5"></div>
