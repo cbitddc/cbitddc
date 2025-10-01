@@ -183,4 +183,22 @@
   .animate-blob {
     animation: blob 7s infinite;
   }
+  
+  /* Horizontal scrolling animations for events */
+  .animate-scroll-horizontal {
+    animation: scrollHorizontal 30s linear infinite;
+  }
+  
+  .animate-scroll-horizontal-slow {
+    animation: scrollHorizontal 45s linear infinite;
+  }
+
+  @keyframes scrollHorizontal {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }

@@ -42,7 +42,7 @@ export function ContactSection() {
           </h2>
           <p className="text-gray-300 text-base sm:text-lg max-w-3xl mx-auto px-4 sm:px-0">
             Ready to join the Digital Defence Club? Have questions about cybersecurity or blockchain? 
-            We'd love to hear from you.
+            We&apos;d love to hear from you.
           </p>
           <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto mt-3 sm:mt-4 rounded-full"></div>
         </div>

@@ -38,7 +38,7 @@ export function HeroSection() {
             </p>
             
             <p className="text-lg md:text-xl text-gray-100 mb-8 text-enhanced-shadow leading-relaxed">
-              Join CBIT's premier cybersecurity community and shape the future of digital security
+              Join CBIT&apos;s premier cybersecurity community and shape the future of digital security
             </p>
           </div>
         </div>

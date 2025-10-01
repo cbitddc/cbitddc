@@ -165,7 +165,7 @@ export function PastEventsSection() {
               Want to Join Our Next Event?
             </h3>
             <p className="text-gray-300 mb-6">
-              Stay updated with DDC activities and be part of CBIT's cybersecurity community.
+              Stay updated with DDC activities and be part of CBIT&apos;s cybersecurity community.
             </p>
             <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
               Get Notified

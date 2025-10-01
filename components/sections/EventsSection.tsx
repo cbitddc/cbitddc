@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from 'react';
-import { Calendar, MapPin, Users, Shield, Code, Database, Search, Lock, Globe, Award, Star, Clock } from 'lucide-react';
+import { Instagram, Twitter, Linkedin } from 'lucide-react';
 import Image from 'next/image';
 
 export function EventsSection() {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeTab, setActiveTab] = useState('past');
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -26,68 +25,27 @@ export function EventsSection() {
     return () => observer.disconnect();
   }, []);
 
-  const pastEvents = [
-    {
-      title: "CyberSec Summit 2024",
-      date: "March 15, 2024",
-      location: "CBIT Auditorium",
-      attendees: "300",
-      type: "Conference",
-      icon: Shield,
-      description: "Annual cybersecurity conference featuring industry experts and hands-on workshops.",
-      highlights: ["Industry Speakers", "Live Hacking Demo", "CTF Competition"],
-      image: "/logo.jpeg"
-    },
-    {
-      title: "Ethical Hacking Workshop",
-      date: "February 20, 2024",
-      location: "Computer Lab 3",
-      attendees: "150",
-      type: "Workshop",
-      icon: Code,
-      description: "Intensive hands-on workshop on penetration testing and ethical hacking techniques.",
-      highlights: ["Kali Linux Training", "Web App Testing", "Network Security"],
-      image: "/logo.jpeg"
-    },
-    {
-      title: "Blockchain & Security Symposium",
-      date: "January 10, 2024",
-      location: "Tech Auditorium",
-      attendees: "200",
-      type: "Symposium",
-      icon: Database,
-      description: "Exploring the intersection of blockchain technology and cybersecurity.",
-      highlights: ["Smart Contract Security", "DeFi Protocols", "Web3 Security"],
-      image: "/logo.jpeg"
-    }
+  // Event photos for past events horizontal scroll
+  const eventPhotos = [
+    { id: 1, src: "/logo.jpeg", alt: "CyberSec Summit 2024", title: "CyberSec Summit 2024" },
+    { id: 2, src: "/logo.jpeg", alt: "Ethical Hacking Workshop", title: "Ethical Hacking Workshop" },
+    { id: 3, src: "/logo.jpeg", alt: "Bug Bounty Session", title: "Bug Bounty Session" },
+    { id: 4, src: "/logo.jpeg", alt: "CTF Competition", title: "CTF Competition" },
+    { id: 5, src: "/logo.jpeg", alt: "Security Awareness", title: "Security Awareness" },
+    { id: 6, src: "/logo.jpeg", alt: "Blockchain Workshop", title: "Blockchain Workshop" },
+    { id: 7, src: "/logo.jpeg", alt: "Penetration Testing", title: "Penetration Testing" },
+    { id: 8, src: "/logo.jpeg", alt: "InfoSec Meetup", title: "InfoSec Meetup" },
+    { id: 9, src: "/logo.jpeg", alt: "Network Security", title: "Network Security Workshop" },
+    { id: 10, src: "/logo.jpeg", alt: "Digital Forensics", title: "Digital Forensics Session" },
   ];
 
-  const upcomingEvents = [
-    {
-      title: "AI Security Conference",
-      date: "November 15, 2024",
-      location: "CBIT Main Auditorium",
-      attendees: "Expected Soon",
-      type: "Conference",
-      icon: Globe,
-      description: "Cutting-edge conference on AI security, machine learning threats, and defense strategies.",
-      highlights: ["AI Red Teaming", "ML Model Security", "Future of AI Defense"],
-      image: "/logo.jpeg"
-    },
-    {
-      title: "Bug Bounty Bootcamp",
-      date: "December 5, 2024",
-      location: "Cyber Lab",
-      attendees: "Limited Seats",
-      type: "Bootcamp",
-      icon: Search,
-      description: "Intensive bug bounty training program with real-world vulnerability discovery.",
-      highlights: ["Live Bug Hunting", "OWASP Top 10", "Vulnerability Assessment"],
-      image: "/logo.jpeg"
-    }
+  // Event types for scrolling text
+  const eventTypes = [
+    "CTFs", "Cybersecurity Workshops", "Bug Bounties", "Ethical Hacking", 
+    "Information Security", "Penetration Testing", "Network Security", 
+    "Web Application Security", "Digital Forensics", "Malware Analysis",
+    "Security Auditing", "Incident Response", "Cryptography"
   ];
-
-  const events = activeTab === 'past' ? pastEvents : upcomingEvents;
 
   return (
     <section id="events" ref={sectionRef} className="py-20 bg-white relative overflow-hidden">
@@ -114,123 +72,98 @@ export function EventsSection() {
                 </h2>
               </div>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Join our dynamic cybersecurity events designed to enhance skills, build networks, and advance careers.
+                Explore our dynamic cybersecurity events and activities that shape the future of digital security.
               </p>
             </div>
           </div>
 
-          {/* Tabs */}
-          <div className={`flex justify-center mb-12 transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <div className="bg-gray-100 rounded-2xl p-2 flex">
-              <button
-                onClick={() => setActiveTab('past')}
-                className={`px-8 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                  activeTab === 'past'
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'text-gray-600 hover:text-blue-600'
-                }`}
-              >
-                Past Events
-              </button>
-              <button
-                onClick={() => setActiveTab('upcoming')}
-                className={`px-8 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                  activeTab === 'upcoming'
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'text-gray-600 hover:text-blue-600'
-                }`}
-              >
-                Upcoming Events
-              </button>
-            </div>
-          </div>
-
-          {/* Events Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {events.map((event, index) => {
-              const Icon = event.icon;
-              const delay = index * 200;
-              
-              return (
-                <div 
-                  key={index}
-                  className={`transform transition-all duration-700 delay-${delay} ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-                >
-                  <div className="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 group hover:scale-105 h-full">
-                    
-                    {/* Event Image */}
-                    <div className="relative mb-6 overflow-hidden rounded-2xl">
-                      <Image 
-                        src={event.image} 
-                        alt={event.title}
-                        width={400}
-                        height={200}
-                        className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+          {/* Past Events Section */}
+          <div className={`mb-16 transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Past Events Gallery</h3>
+            
+            {/* Horizontal Scrolling Photos */}
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-50 to-cyan-50 p-6 mb-8">
+              <div className="flex animate-scroll-horizontal space-x-6">
+                {[...eventPhotos, ...eventPhotos].map((photo, index) => (
+                  <div 
+                    key={`${photo.id}-${index}`}
+                    className="flex-shrink-0 group cursor-pointer"
+                  >
+                    <div className="relative w-64 h-48 overflow-hidden rounded-xl shadow-lg group-hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-110"
                       />
-                      <div className="absolute top-4 left-4">
-                        <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                          {event.type}
-                        </span>
-                      </div>
-                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-xl">
-                        <Icon className="w-6 h-6 text-blue-600" />
-                      </div>
-                    </div>
-
-                    {/* Event Content */}
-                    <div className="space-y-4">
-                      <h3 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
-                        {event.title}
-                      </h3>
-                      
-                      <p className="text-gray-600 leading-relaxed">
-                        {event.description}
-                      </p>
-
-                      {/* Event Details */}
-                      <div className="space-y-2">
-                        <div className="flex items-center text-gray-500">
-                          <Calendar className="w-4 h-4 mr-2" />
-                          <span className="text-sm">{event.date}</span>
-                        </div>
-                        <div className="flex items-center text-gray-500">
-                          <MapPin className="w-4 h-4 mr-2" />
-                          <span className="text-sm">{event.location}</span>
-                        </div>
-                        <div className="flex items-center text-gray-500">
-                          <Users className="w-4 h-4 mr-2" />
-                          <span className="text-sm">{event.attendees} Attendees</span>
-                        </div>
-                      </div>
-
-                      {/* Highlights */}
-                      <div className="space-y-2">
-                        <h4 className="font-semibold text-gray-800">Key Highlights:</h4>
-                        <ul className="space-y-1">
-                          {event.highlights.map((highlight, idx) => (
-                            <li key={idx} className="flex items-center text-sm text-gray-600">
-                              <Star className="w-3 h-3 mr-2 text-yellow-500" />
-                              {highlight}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Action Button */}
-                      <div className="pt-4">
-                        <div className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-3 rounded-xl font-semibold text-center shadow-md">
-                          {activeTab === 'past' ? 'Event Completed' : 'Coming Soon'}
-                        </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute bottom-4 left-4 text-white font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        {photo.title}
                       </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                ))}
+              </div>
+            </div>
+
+            {/* Scrolling Event Types */}
+            <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 p-4">
+              <div className="flex animate-scroll-horizontal-slow space-x-8 text-white">
+                {[...eventTypes, ...eventTypes, ...eventTypes].map((type, index) => (
+                  <div 
+                    key={`${type}-${index}`}
+                    className="flex-shrink-0 text-lg font-semibold whitespace-nowrap"
+                  >
+                    {type}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* Remove call to action with external links */}
+          {/* Upcoming Events Section */}
+          <div className={`text-center transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <h3 className="text-3xl font-bold text-gray-900 mb-8">Upcoming Events</h3>
+            
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-12 border border-blue-200">
+              <div className="max-w-md mx-auto">
+                <div className="text-6xl mb-6">📅</div>
+                <h4 className="text-2xl font-bold text-gray-800 mb-4">No Upcoming Events</h4>
+                <p className="text-gray-600 mb-8">
+                  Stay tuned for our next exciting cybersecurity events and workshops!
+                </p>
+                
+                {/* Follow Us Section */}
+                <div className="space-y-4">
+                  <p className="text-lg font-semibold text-gray-800">Follow us for more updates:</p>
+                  <div className="flex justify-center space-x-6">
+                    <a 
+                      href="#" 
+                      className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300"
+                    >
+                      <Instagram className="w-5 h-5" />
+                      <span>Instagram</span>
+                    </a>
+                    <a 
+                      href="#" 
+                      className="flex items-center space-x-2 bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700 transition-colors duration-300"
+                    >
+                      <Twitter className="w-5 h-5" />
+                      <span>Twitter</span>
+                    </a>
+                    <a 
+                      href="#" 
+                      className="flex items-center space-x-2 bg-blue-800 text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors duration-300"
+                    >
+                      <Linkedin className="w-5 h-5" />
+                      <span>LinkedIn</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </section>
-    );
-  }
+    </section>
+  );
+}
