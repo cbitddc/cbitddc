@@ -37,11 +37,11 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-center justify-center">
                 <Mail className="w-4 h-4 text-blue-400 mr-2" />
-                <span className="text-gray-300 text-sm">ddc@cbit.edu</span>
+                <span className="text-gray-300 text-sm">ccc@cbit.ac.in</span>
               </div>
               <div className="flex items-center justify-center">
                 <Phone className="w-4 h-4 text-blue-400 mr-2" />
-                <span className="text-gray-300 text-sm">+91 98765 43210</span>
+                <span className="text-gray-300 text-sm">+91 8184889557</span>
               </div>
             </div>
           </div>
