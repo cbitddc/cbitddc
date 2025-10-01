@@ -90,11 +90,24 @@ export function EventsSection() {
   const events = activeTab === 'past' ? pastEvents : upcomingEvents;
 
   return (
-    <section id="events" ref={sectionRef} className="py-20 bg-white relative overflow-hidden">
-        {/* Background decorative elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white to-cyan-50/30"></div>
-        <div className="absolute top-20 right-10 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-cyan-100 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
+    <section id="events" ref={sectionRef} className="py-20 relative overflow-hidden min-h-screen">
+        {/* Spline Background */}
+        <div className="spline-container">
+          <spline-viewer 
+            url="https://prod.spline.design/ZBWp-Ex-7fGMo0Iq/scene.splinecode"
+            style={{
+              width: '100%',
+              height: '100%',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              opacity: 0.4,
+              pointerEvents: 'none'
+            }}
+          />
+          {/* Progressive overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/90 backdrop-blur-[2px] z-1"></div>
+        </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
